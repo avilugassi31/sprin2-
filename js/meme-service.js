@@ -10,7 +10,7 @@ var gCurrKeyWord = 'all';
 
 var gNextText;
 const KEY = 'savedMemes';
-var gReadyMemes = loadReadyMemes() ? loadReadyMemes() : [];
+var gReadyMemes = loadReadyMemes() ? loadReadyMemes() : []; // i take that short if from google.
 
 function getImgs() {
   if (gCurrKeyWord === 'all') return gImgs;

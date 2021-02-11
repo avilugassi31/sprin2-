@@ -371,7 +371,7 @@ header {
 }
 /* about-me */
 .about-me {
-  background-color: rgb(247, 203, 121);
+  background-color: rgb(221, 221, 221);
   opacity: 0.9;
   border: 1px solid rgb(213, 255, 174);
 }
@@ -381,18 +381,18 @@ header {
   margin-left: 20px;
 }
 .about-me-paragraph {
-  margin-right: 700px;
+  margin-right: 350px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: space-between;
+  justify-content: center;
+  /* align-items: center; */
   column-count: 1;
 }
 /* footer */
 footer {
   width: 100%;
   height: 150px;
-  background-color: #58f9ff;
+  background-color:lightyellow;
 }
 .credits {
   height: 70px;

@@ -295,7 +295,7 @@ function onSaveMeme() {
   // not working properly need to be fixed if there is enough time;
   var canvas = document.querySelector('#meme-canvas');
   var readyMemes = getReadyMemes();
-  readyMemes.push(canvas.toDataURL('imgp/ng'));
+  readyMemes.push(canvas.toDataURL('img.png'));
   saveToStorage(KEY, readyMemes);
 }
 
