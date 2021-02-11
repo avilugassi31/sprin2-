@@ -10,11 +10,12 @@
 body {
   margin: 0;
   font-family: Montserrat;
+  background-color: lightyellow;
 }
 a {
   text-decoration: none;
   color: rgb(7, 12, 0);
-  font-family:cursive;
+  font-family: cursive;
 }
 button:hover {
   cursor: pointer;
@@ -68,7 +69,7 @@ li > div:hover {
   margin-inline-start: 2.5rem;
 }
 .imgs-container {
-  background-color: lightskyblue;
+  background-color: lightyellow;
   padding-left: 50px;
   padding-right: 50px;
 }
@@ -100,7 +101,6 @@ li > div:hover {
 }
 .meme-done-btns {
   margin-top: 100px;
- 
 }
 .meme-done-btn {
   background-color: #f0ece8;
@@ -169,22 +169,22 @@ li > div:hover {
 header {
   min-width: 100%;
   height: 66px;
-  background-color: #bbbaba;
+  background-color: #7efbff;
   color: white;
+  margin-bottom: 20px;
 }
 .logo-cont {
   margin-inline-start: 45px;
 }
 .logo-img {
   width: 130px;
-  height:80px;
+  height: 80px;
   object-fit: contain;
 }
 .main-nav {
   margin-inline-end: 40px;
 }
 .main-nav .nav-herf {
-  color: white;
   display: flex;
   justify-content: center;
   height: 100%;
@@ -193,7 +193,7 @@ header {
 
 .main-nav .nav-herf:hover {
   cursor: pointer;
-  box-shadow: 0 0 0 #1d1d1d, inset 0 -6px 0 #1d1d1d;
+  box-shadow: 0 0 0 #fcff69, inset 0 -6px 0 #fcff69;
 }
 .main-nav .nav-herf:hover a {
   color: #1d1d1d;
@@ -258,7 +258,7 @@ header {
 .meme-edit-tools {
   min-width: 30%;
   margin-top: 35px;
-  margin-left:50px;
+  margin-left: 50px;
   text-align: center;
   flex-wrap: wrap;
   align-items: center;
@@ -362,41 +362,7 @@ header {
   background-color: red;
   border-color: red;
 }
-/* personal details */
-.personal-details {
-  max-width: 100%;
-  height: 570px;
-}
-.about {
-  min-width: 300px;
-  height: 320px;
-}
-.about > p {
-  width: 30ch;
-}
-.profile-img {
-  height: 100%;
-  max-width: 320px;
-  border-radius: 50%;
-  margin-left: 100px;
-}
-.personal-info {
-  margin-left: 50px;
-  margin-right: 50px;
-}
-.social-btns {
-  justify-content: space-between;
-  height: 30px;
-  width: 180px;
-}
-.fab {
-  color: #ff7f00;
-  height: 100%;
-  width: 33%;
-}
-.fab:hover {
-  cursor: pointer;
-}
+
 @media (max-width: 710px) {
   .personal-details {
     margin-bottom: 30px;
@@ -425,20 +391,43 @@ header {
     }
   }
 }
+
+/* about-me */
+.about-me {
+  background-color: rgb(247, 203, 121);
+  opacity: 0.7;
+}
+.about-me-img {
+  border-radius: 50%;
+  object-fit: contain;
+  margin-left: 20px;
+}
+.about-me-paragraph {
+  margin-right:280px;
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  column-count: 1;
+}
 /* footer */
 footer {
   width: 100%;
-  height: 210px;
-  background-color: #94928f;
+  height: 150px;
+  background-color: #58f9ff;
 }
 .credits {
   height: 70px;
   align-items: center;
   justify-content: space-between;
+ 
 }
-.avi{
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: 700;
-    font-style: italic;
-    font-size:20px;
+.avi {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 20px;
+}
+
+.hidden {
+  display: none;
 }

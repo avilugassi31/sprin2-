@@ -4,7 +4,7 @@ var gMeme = { lines: [] };
 var gNextId = 0;
 var gCurrImage;
 var gFontSize = 15;
-var gLineHeights = { upperText: 20, bottomText: 70, middleText: 45 };
+var gLineHeights = { upperText: 20, bottomText: 70};
 let gKeyWords = { politics: 1, dog: 1, cute: 3, baby: 0, kid: 0, actor: 5 };
 var gCurrKeyWord = 'all';
 
@@ -90,7 +90,6 @@ function resetMeme(imgId) {
 function getReadyMemes() {
   return gReadyMemes;
 }
-
 // clear ,load and svae functions localstorage - not working properly:need to be fixed;
 function saveMeme(readyMeme) {
   saveToStorage(KEY, readyMeme);

@@ -2,7 +2,7 @@
 
 function init() {
   renderImgs();
-  let elBody = document.querySelector('body');
+  var elBody = document.querySelector('body');
   if (elBody.classList.contains('menu-open'))
     elBody.classList.remove('menu-open');
 }
@@ -41,7 +41,7 @@ function renderMemeGenerator(imgId) {
     <section class ="meme-edit-tools flex column align-items">
 
     <label for="meme-text"></label>
-    <input type="text" id="meme-text" class="meme-text-input" placeholder="enter meme text:" oninput="updateMemeTemplate(event)" >
+    <input type="text" id="meme-text" class="-input" placeholder="enter meme text:" oninput="updateMemeTemplate(event)" >
     <label for="font-size"></label>
     <div class="btns-container">
     <div class="basic-btns flex space-between">
@@ -57,17 +57,32 @@ function renderMemeGenerator(imgId) {
     <input type="color" class="font-input color-picker" onchange="changeTextColor()">
     </div>
     </div>
+    <div class="text-alignment">
+    <label for="cars">Choose a font:</label>
+  <select name="fonts" id="fonts">
+    <option value="cursive">Cursive</option>
+    <option value="monospace">Monospace</option>
+    <option value="fantasy">Fantasy</option>
+    
+  </select>
+    </div>
     <div class="meme-done-btns">
     <a href="#" onclick="downloadCanvas(this)" download="my-meme.jpg">
     <button class="meme-done-btn">Download</button>
     </a>  
-    <button class="meme-done-btn" onclick="onSaveMeme()">Save</button>  
-    <button class="meme-done-btn">Share</button>  
+    <button class="meme-done-btn" onclick="onSaveMeme()">Save</button> 
+    <button class="meme-done-btn" type="submit">Share</button>
+    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
+    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+      <input name="img" id="imgData" type="hidden" />
+       
+      <div class="share-container"></div>
+    </form>
+    
     </div>
     </div>
     
     </section>
-
 </div>
 `;
 
@@ -180,7 +195,6 @@ function printMemeText(lineidx) {
     );
   }
 }
-
 function renderUpdatedMeme(renderBothLines = false) {
   // i got that way of default boolean from MDN:
   var currMeme = getGmeme();
@@ -221,7 +235,6 @@ function changeFontSize(ev, value) {
   drawImg(gCurrImage);
   renderUpdatedMeme(true); // render both lines of text inside canvas
 }
-
 function goToNextLine(ev) {
   ev.preventDefault();
   var currMeme = getGmeme();
@@ -237,7 +250,7 @@ function switchLines() {
   gLineHeights.upperText = canvas.width - gLineHeights.bottomText - 30;
   gLineHeights.bottomText = canvas.width - pivotValue - 30;
   drawImg(gCurrImage);
-  updateMemeTemplate(ev);
+  updateMemeTemplate(event);
 }
 function changeTextColor() {
   var currMeme = getGmeme();
@@ -271,24 +284,4 @@ function toggleMenu() {
 
 function toggleScreen() {
   document.body.classList.remove('menu-open');
-}
-function openReadyMeme(meme) {
-  document.body.classList.toggle('screen-toggle');
-  const uploadMemeUrl = encodeURIComponent(meme);
-  const memeModalContent = `
-    <img src="${meme}""${meme}" class="modal-img">
-    <div class ="saved-meme-btns">
-    <a href="${meme}" download="my-meme.jpg">
-    <button class="meme-done-btn full-size">Download</button>
-    </a>  
-    <a herf="https://www.facebook.com/sharer/sharer.php?u=${uploadMemeUrl}&t=${uploadMemeUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadMemeUrl}&t=${uploadMemeUrl}'); return false;">
-    <button class="meme-done-btn full-size">Share</button> 
-    </a>  
-    <button class="meme-done-btn delete-btn full-size" onclick="onDeleteMeme('${meme}')">Delete</button>  
-    <button class="meme-done-btn full-size" onclick="onCloseMemeModal()">Close</button>  
-    </div>
-    `;
-  const elMemeModal = document.querySelector('.meme-modal');
-  elMemeModal.innerHTML = memeModalContent;
-  elMemeModal.style.display = 'flex';
 }

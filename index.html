@@ -10,7 +10,6 @@
 </head>
 
 <body onload="init()">
-
     <header class="flex space-between">
         <div class="logo-cont flex align-center"><img src="icons/logo.png" class="logo-img"></div>
         <div class="main-nav  flex ">
@@ -23,16 +22,21 @@
     </header>
     <div class="screen" onclick="toggleMenu()"></div>
     <div class="meme-modal"></div>
-
-    <div class="search-bar flex align-center">
-        <label for="gsearch"></label>
-        <input type="text" class="gsearch" name="gsearch" placeholder="search template 🔍"
-            oninput="filterImagetoDisplay()">
-    </div>
     <div class="imgs-container">
-        
     </div>
-
+    <div class="about-me flex space-between">
+        <img src="imgs/avi.jpg" alt="" class="about-me-img">
+        <div class="about-me-paragraph">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                <br>
+                Odit, nesciunt nostrum ad suscipit officiis
+                <br>
+                veritatis consectetur blanditiis unde recusandae repellendus nemo accusantium?
+                <br>
+                Sequi aspernatur omnis
+                voluptatibus mollitia minima cumque amet!</p>
+        </div>
+    </div>
     <footer class="flex justify-center align-center">
         <div class="credits flex column">
             <img src="icons/logo.png" class="logo-img">
@@ -40,6 +44,7 @@
         </div>
     </footer>
     <script src="js/storage-service.js"></script>
+    <script src="js/share-service.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/meme-control.js"></script>
 
