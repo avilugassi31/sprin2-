@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body onload="init()">
+
+    <header class="flex space-between">
+        <div class="logo-cont flex align-center"><img src="icons/logo.png" class="logo-img"></div>
+        <div class="main-nav  flex ">
+            <div class="nav-herf flex center align-center" onclick="init()"><a href="#">Gallery</a></div>
+            <img src="icons/6.png" class="seperator">
+            <div class="nav-herf flex align-center" onclick="renderReadyMemes()"><a href="#">Memes</a></div>
+            <img src="icons/6.png" class="seperator">
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+    </header>
+    <div class="screen" onclick="toggleMenu()"></div>
+    <div class="meme-modal"></div>
+
+    <div class="search-bar flex align-center">
+        <label for="gsearch"></label>
+        <input type="text" class="gsearch" name="gsearch" placeholder="search template 🔍"
+            oninput="filterImagetoDisplay()">
+    </div>
+    <div class="imgs-container">
+        
+    </div>
+
+    <footer class="flex justify-center align-center">
+        <div class="credits flex column">
+            <img src="icons/logo.png" class="logo-img">
+            <small>All rights reserved@<span class="avi"> Avi Lugassi 2021</span></small>
+        </div>
+    </footer>
+    <script src="js/storage-service.js"></script>
+    <script src="js/meme-service.js"></script>
+    <script src="js/meme-control.js"></script>
+
+</body>
+
+</html>

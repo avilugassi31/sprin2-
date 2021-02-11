@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body onload="init()">
+    <header class="flex space-between">
+        <div class="logo-cont flex align-center"><img src="/icons/logo.png" class="logo-img"></div>
+        <div class="main-nav  flex ">
+            <div class="nav-herf flex center align-center" onclick="init()"><a  href="#" >Gallery</a></div>
+            <img src="icons/6.png" class="seperator">
+            <div class="nav-herf flex align-center" onclick= "renderReadyMemes()"><a  href="#">Memes</a></div>
+            <img src="icons/6.png" class="seperator">
+            <div class="nav-herf flex align-center"><a  href="#">About</a>
+            </div>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+    </header>
+    <div class="screen" onclick="toggleMenu()" ></div>
+    <div class= "meme-modal"></div>
+
+
+    <div class="imgs-container">
+    </div>
+
+    <section class="personal-details flex align-center justify-center ">
+        <div class="about flex justify-content: space-evenly align-center">
+            <img src="icons/10.jpg" class="profile-img">
+            <div class="personal-info flex column">
+                <h2>Nadav Samuel</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui fuga tenetur earum
+                     dolores iusto vel enim, corrupti est molestias repellat. 
+                    Suscipit aut consequuntur atque maiores deleniti, explicabo accusantium ab officiis.</p>
+                    <div class="social-btns flex">
+                        <img src="icons/11.png" class="social-btn">
+                        <img src="icons/12.png" class="social-btn">
+                        <img src="icons/13.png" class="social-btn">
+                    </div>
+
+            </div>
+
+        </div>
+    </section>
+  
+<footer class="flex justify-center align-center">
+    <div class="credits flex column">
+        <img src="/icons/logo.png" class="logo-img">
+        <span class="rights">all rights recived Nadav Samuel 2020</span>
+    </div>
+</footer>
+
+    
+<script src="https://kit.fontawesome.com/f4db3fc42d.js" crossorigin="anonymous"></script>
+    <script src="js/util.js"></script>
+    <script src="js/storage-service.js"></script>
+    <script src="js/meme-service.js"></script>
+    <script src="js/meme-control.js"></script>
+
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script></body>
+</html>
