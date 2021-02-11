@@ -53,13 +53,15 @@ function renderMemeGenerator(imgId) {
     <div class="secondery-btns flex space-between">
     <input type="image" class="font-input" src="icons/1.png" onclick="changeFontSize(event,false)">
     <input type="image" class="font-input" src="icons/2.png" onclick="changeFontSize(event,true)">
+    <input type="image" class="font-input" src="icons/4.svg" onclick=" changeTextPosition(${true})">
+    <input type="image" class="font-input" src="icons/5.svg" onclick=" changeTextPosition(${false})">
     <div class= color-pick>
     <input type="color" class="font-input color-picker" onchange="changeTextColor()">
     </div>
     </div>
     <div class="text-alignment">
     <label for="cars">Choose a font:</label>
-  <select name="fonts" id="fonts">
+  <select name="fonts" id="fonts" onchange="chngeFont(this.value)">
     <option value="cursive">Cursive</option>
     <option value="monospace">Monospace</option>
     <option value="fantasy">Fantasy</option>
@@ -251,6 +253,25 @@ function switchLines() {
   gLineHeights.bottomText = canvas.width - pivotValue - 30;
   drawImg(gCurrImage);
   updateMemeTemplate(event);
+}
+
+function changeTextPosition(value) {
+  var currMeme = getGmeme();
+  if (currMeme.selectedLineIdx >= 2) return;
+
+  var canvas = document.querySelector('#meme-canvas');
+  var ctx = canvas.getContext('2d');
+  if (currMeme.selectedLineIdx === 0) {
+    if (value) gLineHeights.upperText -= 5;
+    else gLineHeights.upperText += 5;
+  }
+  if (currMeme.selectedLineIdx === 1) {
+    if (value) gLineHeights.bottomText += 5;
+    else gLineHeights.bottomText -= 5;
+  }
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawImg(gCurrImage);
+  renderUpdatedMeme(true);
 }
 function changeTextColor() {
   var currMeme = getGmeme();

@@ -20,7 +20,11 @@ a {
 button:hover {
   cursor: pointer;
 }
-
+h3 {
+  font-size: 20px;
+  font-weight: bolder;
+  font-style: italic;
+}
 img {
   width: 100%;
   max-width: 300px;
@@ -279,6 +283,9 @@ header {
   margin-top: 50px;
   flex-wrap: wrap;
 }
+.text-alignment {
+  margin-top: 50px;
+}
 @media (max-width: 910px) {
   .canvas-container {
     margin: 0;
@@ -362,40 +369,11 @@ header {
   background-color: red;
   border-color: red;
 }
-
-@media (max-width: 710px) {
-  .personal-details {
-    margin-bottom: 30px;
-  }
-  .about {
-    flex-direction: column;
-    height: 530px;
-  }
-  p {
-    font-size: 15px;
-    margin-top: 0;
-  }
-  .profile-img {
-    margin: 0;
-  }
-  .personal-info {
-    text-align: center;
-    align-items: center;
-  }
-  h2 {
-    color: #ff7f00;
-  }
-  @media (max-width: 380px) {
-    p {
-      font-size: 0.75rem;
-    }
-  }
-}
-
 /* about-me */
 .about-me {
   background-color: rgb(247, 203, 121);
-  opacity: 0.7;
+  opacity: 0.9;
+  border: 1px solid rgb(213, 255, 174);
 }
 .about-me-img {
   border-radius: 50%;
@@ -403,10 +381,11 @@ header {
   margin-left: 20px;
 }
 .about-me-paragraph {
-  margin-right:280px;
+  margin-right: 700px;
   display: flex;
-  justify-content:space-around;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: space-between;
   column-count: 1;
 }
 /* footer */
@@ -419,7 +398,6 @@ footer {
   height: 70px;
   align-items: center;
   justify-content: space-between;
- 
 }
 .avi {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -430,4 +408,15 @@ footer {
 
 .hidden {
   display: none;
+}
+
+@media (max-width: 710px) {
+  .about-me {
+    flex-direction: column;
+    margin: 0 auto;
+    flex-grow: 1;
+  }
+  .about-me-paragraph {
+    display: none;
+  }
 }
