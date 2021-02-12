@@ -11,6 +11,7 @@ body {
   margin: 0;
   font-family: Montserrat;
   background-color: lightyellow;
+  text-align: center;
 }
 a {
   text-decoration: none;
@@ -19,6 +20,12 @@ a {
 }
 button:hover {
   cursor: pointer;
+}
+h2 {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-shadow: 0 3px 0 rgb(105, 105, 105);
+    color:rgb(177, 103, 19)
 }
 h3 {
   font-size: 20px;
@@ -193,6 +200,7 @@ header {
   justify-content: center;
   height: 100%;
   width: 131px;
+  border-bottom: 3px solid lightblue;
 }
 
 .main-nav .nav-herf:hover {
@@ -222,28 +230,24 @@ header {
   }
 }
 @media (max-width: 710px) {
-  /* .main-nav{
-        display: none;
-    } */
+  a {
+    color: aquamarine;
+    text-transform: uppercase;
+  }
   .seperator {
     display: none;
   }
   .main-nav {
     margin: 0;
     flex-direction: column;
-    justify-content: start;
-    align-items: center;
     position: fixed;
     z-index: 3;
-    /* bottom: 100vh; */
     right: 0;
-    /* width: 100vw; */
     height: 100vh;
-    background: rgb(100 50 0 / 90%);
-    /* box-shadow: -8px 0px 20px rgb(0 0 0 / 10%); */
+    background: lightyellow;
+    opacity: 0.8;
     transform: translateX(200%);
-    /* border-left: solid 1px #ccc; */
-
+    border-left: solid 1px rgb(92, 206, 252);
     transition: transform 0.8s, box-shadow 0.8s;
   }
   body.menu-open .main-nav {
@@ -261,10 +265,8 @@ header {
 }
 .meme-edit-tools {
   min-width: 30%;
-  margin-top: 35px;
+  margin-top: 85px;
   margin-left: 50px;
-  text-align: center;
-  flex-wrap: wrap;
   align-items: center;
 }
 .meme-text-input {
@@ -371,28 +373,26 @@ header {
 }
 /* about-me */
 .about-me {
-  background-color: rgb(221, 221, 221);
+  background-color: rgb(238, 229, 181);
   opacity: 0.9;
-  border: 1px solid rgb(213, 255, 174);
+  border: 3px solid rgb(177, 252, 248);
 }
 .about-me-img {
   border-radius: 50%;
   object-fit: contain;
   margin-left: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 180px;
 }
 .about-me-paragraph {
-  margin-right: 350px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* align-items: center; */
-  column-count: 1;
+  margin-right: 580px;
 }
 /* footer */
 footer {
   width: 100%;
   height: 150px;
-  background-color:lightyellow;
+  background-color: lightyellow;
 }
 .credits {
   height: 70px;
@@ -412,11 +412,9 @@ footer {
 
 @media (max-width: 710px) {
   .about-me {
-    flex-direction: column;
-    margin: 0 auto;
-    flex-grow: 1;
-  }
-  .about-me-paragraph {
     display: none;
+  }
+  footer {
+    background-color: #7efbff;
   }
 }

@@ -35,7 +35,8 @@ function renderMemeGenerator(imgId) {
   elImgsCont.innerHTML = '';
   elImgsCont.innerHTML = ` <div class="generator-page" >
     <div class ="canvas-container">
-    <canvas id="meme-canvas" width= "400" height="400"></canvas>
+    <h2>Meme Editor</h2>
+    <canvas id="meme-canvas" width= "400" height="400" style="outline: 3px dashed aqua"></canvas>
     </div>
 
     <section class ="meme-edit-tools flex column align-items">
@@ -62,9 +63,9 @@ function renderMemeGenerator(imgId) {
     <div class="text-alignment">
     <label for="cars">Choose a font:</label>
   <select name="fonts" id="fonts" onchange="chngeFont(this.value)">
-    <option value="cursive">Cursive</option>
-    <option value="monospace">Monospace</option>
-    <option value="fantasy">Fantasy</option>
+    <option value="Cursive">Cursive</option>
+    <option value="Monospace">Monospace</option>
+    <option value="Arial">Fantasy</option>
     
   </select>
     </div>
@@ -91,10 +92,10 @@ function renderMemeGenerator(imgId) {
   drawImg(currImg);
   gCurrImage = currImg;
 }
-function renderReadyMemes() {
+function getReadyMemes() {
   var elBody = document.querySelector('body');
-  if (elBody.classList.contains('menu-open'))
-    elBody.classList.remove('menu-open'); // based on css visability - can be hidden as well
+  if (elBody.classList.contains('menu-open'));
+  elBody.classList.remove('menu-open'); // based on css visability - can be hidden as well
   var readyMemes = getReadyMemes();
   var elImgsCont = document.querySelector('.imgs-container');
   elImgsCont.innerHTML = '';
@@ -138,15 +139,15 @@ function updateMemeTemplate(ev) {
 
 function setTextDetails(lineIdx) {
   var currMeme = getGmeme();
-  console.log('currMeme:', currMeme);
+  // console.log('currMeme:', currMeme);
   var canvas = document.querySelector('#meme-canvas');
   var ctx = canvas.getContext('2d');
   currMeme.selectedLineIdx = lineIdx;
   var fontSize =
     canvas.width / currMeme.lines[currMeme.selectedLineIdx].fontSize;
   var textColor = currMeme.lines[currMeme.selectedLineIdx].color;
-  // basedon stav inClass Code
-  ctx.font = fontSize + 'px Impact';
+  // based on stav inClass Code
+  ctx.font = fontSize + 'px Impact'  ;
   ctx.fillStyle = textColor ? textColor : 'white';
   ctx.strokeStyle = 'black';
   ctx.lineWidth = fontSize / 15;
@@ -158,7 +159,6 @@ function printMemeText(lineidx) {
   var canvas = document.querySelector('#meme-canvas');
   var ctx = canvas.getContext('2d');
   var sizeHelper = canvas.width / 15;
-  console.log('sizeHelper:', sizeHelper);
   var lineHeight;
   currMeme.selectedLineIdx = lineidx;
   //  the IF For how to fill the text and the color inside :
@@ -196,6 +196,21 @@ function printMemeText(lineidx) {
       canvas.width
     );
   }
+}
+
+function chngeFont(font) {
+  var fontStyle = document.querySelector('select').value;
+  console.log('font:', fontStyle);
+  var currMeme = getGmeme();
+  console.log('currMeme:', currMeme);
+  var canvas = document.querySelector('#meme-canvas');
+  console.log('canvas:', canvas);
+  var ctx = canvas.getContext('2d');
+  console.log('ctx:', ctx);
+  var fontSize =
+    canvas.width / currMeme.lines[currMeme.selectedLineIdx].fontSize;
+  ctx.font = fontSize + fontStyle;
+  console.log('font.value:', font);
 }
 function renderUpdatedMeme(renderBothLines = false) {
   // i got that way of default boolean from MDN:
