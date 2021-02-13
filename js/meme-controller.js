@@ -67,10 +67,12 @@ function renderMemeGenerator(imgId) {
     </div>
     <div class="text-alignment">
     <label for="cars">Choose a font:</label>
-  <select name="fonts" id="fonts" onchange="chngeFont(this.value)">
+  <select name="fonts" id="fonts" ">
     <option value="Cursive">Cursive</option>
-    <option value="Monospace">Monospace</option>
-    <option value="Fantasy">Fantasy</option>
+    <option value="Impact">Impact</option>
+     <option value="Monospace">Monospace</option>
+      <option value="Arial">Arial</option>
+    
     
   </select>
     </div>
@@ -155,11 +157,13 @@ function setTextDetails(lineIdx) {
   var canvas = document.querySelector('#meme-canvas');
   var ctx = canvas.getContext('2d');
   currMeme.selectedLineIdx = lineIdx;
+  var elChangedFont = document.querySelector('#fonts').value;
+  console.log('elChangedFont:', elChangedFont);
   var fontSize =
-    canvas.width / currMeme.lines[currMeme.selectedLineIdx].fontSize;
+    canvas.width / currMeme.lines[currMeme.selectedLineIdx].fontSize + 20;
   var textColor = currMeme.lines[currMeme.selectedLineIdx].color;
   // basedon stav inClass Code
-  ctx.font = fontSize + 'px Impact';
+  ctx.font = fontSize + 'px ' + elChangedFont;
   ctx.fillStyle = textColor ? textColor : 'white';
   ctx.strokeStyle = 'black';
   ctx.lineWidth = fontSize / 15;
@@ -233,24 +237,24 @@ function renderUpdatedMeme(renderBothLines = false) {
   }
 }
 
-function chngeFont(font) {
-  // console.log('font:', font);
-  var fontStyle = document.querySelector('select').value;
-  var currMeme = getGmeme();
-  var canvas = document.querySelector('#meme-canvas');
-  var ctx = canvas.getContext('2d');
-  font = fontStyle;
-  console.log('font:', font);
-  var fontSize =
-    canvas.width / currMeme.lines[currMeme.selectedLineIdx].fontSize;
-  if (font.value === 'Cursive') {
-    console.log('font:', font);
-    ctx.font = fontSize + 'px Cursive';
-  } else if (font.value === 'Monospace') {
-    ctx.font = fontSize + 'px Monospace';
-  }
-  renderUpdatedMeme(true);
-}
+// function chngeFont(font) {
+//   // console.log('font:', font);
+//   var fontStyle = document.querySelector('select').value;
+//   var currMeme = getGmeme();
+//   var canvas = document.querySelector('#meme-canvas');
+//   var ctx = canvas.getContext('2d');
+//   font = fontStyle;
+//   console.log('font:', font);
+//   var fontSize =
+//     canvas.width / currMeme.lines[currMeme.selectedLineIdx].fontSize;
+//   if (font.value === 'Cursive') {
+//     console.log('font:', font);
+//     ctx.font = fontSize + 'px Cursive';
+//   } else if (font.value === 'Monospace') {
+//     ctx.font = fontSize + 'px Monospace';
+//   }
+//   renderUpdatedMeme(true);
+// }
 function changeFontSize(ev, value) {
   var currMeme = getGmeme();
   var canvas = document.querySelector('#meme-canvas');
