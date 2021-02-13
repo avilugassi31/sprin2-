@@ -5,7 +5,9 @@ var gNextId = 0;
 var gCurrImage;
 var gFontSize = 15;
 var gLineHeights = { upperText: 20, bottomText: 70};
+let gKeyWords = { politics: 1, dog: 1, cute: 3, baby: 0, kid: 0, actor: 5 };
 var gCurrKeyWord = 'all';
+
 var gNextText;
 const KEY = 'savedMemes';
 var gReadyMemes = loadReadyMemes() ? loadReadyMemes() : []; // i take that short if from google.
@@ -19,15 +21,16 @@ function getImgs() {
     return imgsToDisplay;
   }
 }
+
 function getGkeyWords() {
   return gKeyWords;
 }
+
 function createImg(urlIdx, desc) {
   return {
     id: gNextId++,
     url: `imgs/${urlIdx}.jpg`,
     keyWords: desc,
-
   };
 }
 createImages();
@@ -66,6 +69,7 @@ function getImgById(imgId) {
   });
   return currImg;
 }
+
 function setMeme(imgId) {
   var currImg = getImgById(imgId);
   gMeme.selectedImgId = currImg.id;
@@ -75,6 +79,10 @@ function setMeme(imgId) {
 function getGmeme() {
   return gMeme;
 }
+function getFontSize() {
+  var currMeme = getGmeme();
+  return currMeme.lines[currMeme.selectedLineIdx].fontSize;
+}
 function resetMeme(imgId) {
   setMeme(imgId);
   gLineHeights = { upperText: 20, bottomText: 70 };
@@ -82,7 +90,7 @@ function resetMeme(imgId) {
 function getReadyMemes() {
   return gReadyMemes;
 }
-//load and svae functions localstorage;
+// load and svae functions localstorage - not working properly:need to be fixed;
 function saveMeme(readyMeme) {
   saveToStorage(KEY, readyMeme);
 }
