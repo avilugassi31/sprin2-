@@ -1,5 +1,6 @@
 'use strict';
-
+var gCurrKeyWord;
+var gCurrImg;
 function init() {
   renderImgs();
   var elBody = document.querySelector('body');
@@ -20,12 +21,14 @@ function renderImgs() {
   var strHtml = strHtml1 + strHtml2.join('') + `</div>`;
   elImgsCont.innerHTML = strHtml;
 }
-function filterImagetoDisplay() {
-  var elKeyWord = document.querySelector('#gsearch').value;
-  if (elKeyWord === '') gCurrKeyWord = 'all';
-  else gCurrKeyWord = elKeyWord;
-  renderImgs();
-}
+// function getImagesByKeyword() {
+//    gCurrKeyWord = getGkeyWords();
+//    console.log('gCurrKeyWord:', gCurrKeyWord)
+//  if (gCurrKeyWord === 'politics') {
+//    return
+//  }
+
+// }
 
 function renderMemeGenerator(imgId) {
   var currImgDetails = getImgById(imgId);
@@ -34,8 +37,11 @@ function renderMemeGenerator(imgId) {
   var elImgsCont = document.querySelector('.imgs-container');
   elImgsCont.innerHTML = '';
   elImgsCont.innerHTML = ` <div class="generator-page" >
+
     <div class ="canvas-container">
-    <canvas id="meme-canvas" width= "400" height="400"></canvas>
+ 
+
+    <canvas id="meme-canvas" width= "400" height="400" style="outline: 3px dashed aqua"></canvas>
     </div>
 
     <section class ="meme-edit-tools flex column align-items">
@@ -47,7 +53,7 @@ function renderMemeGenerator(imgId) {
     <div class="basic-btns flex space-between">
     <input type="image" class="font-input" src="icons/7.png" onclick="switchLines()">
     <input type="image" class="font-input" src="icons/8.png" onclick="deleteText(${imgId})" >
-    <input type="image" class="font-input" src="icons/9.png"onclick="goToNextLine(event)" >
+    <input type="image" class="font-input" src="icons/9.png"onclick="addTextLine(event)" >
     </div>
     <label for="font-size"></label>
     <div class="secondery-btns flex space-between">
@@ -135,6 +141,14 @@ function updateMemeTemplate(ev) {
   }
   renderUpdatedMeme(true);
 }
+function myFunction() {
+  var keywords = getGkeyWords();
+  console.log('keywords:', keywords);
+  var input = document.getElementById('myInput').value;
+  if (input === keywords.value) {
+    console.log('hello');
+  }
+}
 
 function setTextDetails(lineIdx) {
   var currMeme = getGmeme();
@@ -220,16 +234,20 @@ function renderUpdatedMeme(renderBothLines = false) {
 }
 
 function chngeFont(font) {
-  console.log('font:', font)
+  // console.log('font:', font);
   var fontStyle = document.querySelector('select').value;
   var currMeme = getGmeme();
   var canvas = document.querySelector('#meme-canvas');
   var ctx = canvas.getContext('2d');
+  font = fontStyle;
+  console.log('font:', font);
   var fontSize =
     canvas.width / currMeme.lines[currMeme.selectedLineIdx].fontSize;
-  if (font === 'Cursive'){
-    console.log('font:', font)
+  if (font.value === 'Cursive') {
+    console.log('font:', font);
     ctx.font = fontSize + 'px Cursive';
+  } else if (font.value === 'Monospace') {
+    ctx.font = fontSize + 'px Monospace';
   }
   renderUpdatedMeme(true);
 }
@@ -249,7 +267,7 @@ function changeFontSize(ev, value) {
   drawImg(gCurrImage);
   renderUpdatedMeme(true); // render both lines of text inside canvas
 }
-function goToNextLine(ev) {
+function addTextLine(ev) {
   ev.preventDefault();
   var currMeme = getGmeme();
   if (currMeme.selectedLineIdx === 2) return;

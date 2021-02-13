@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Generator</title>
     <link rel="stylesheet" href="css/style.css">
-    
+    <link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon">
+
 
 </head>
+
 <body onload="init()">
     <header class="flex space-between">
         <div class="logo-cont flex align-center"><img src="icons/logo.png" class="logo-img"></div>
@@ -22,7 +24,9 @@
     </header>
     <div class="screen" onclick="toggleMenu()"></div>
     <div class="meme-modal"></div>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search By Keyword..">
     <div class="imgs-container">
+
     </div>
     <div class="about-me flex space-between">
         <img src="imgs/avi.jpg" alt="" class="about-me-img">
@@ -31,11 +35,11 @@
             <p>
                 Avi Lugassi , 31 From Merom-Golan...
                 <br>
-               Talia's Husband , Geva's Father.
+                Talia's Husband , Geva's Father.
                 <br>
-               Enjoy My Meme-Generator!!!
-               <br>
-               For More Projects...<a href="mailto:avilugassi23@gmail.com">Send Me An Email</a>
+                Enjoy My Meme-Generator!!!
+                <br>
+                For More Projects...<a href="mailto:avilugassi23@gmail.com">Send Me An Email</a>
             </p>
         </div>
     </div>

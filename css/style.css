@@ -24,8 +24,8 @@ button:hover {
 h2 {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    text-shadow: 0 3px 0 rgb(105, 105, 105);
-    color:rgb(177, 103, 19)
+  text-shadow: 0 3px 0 rgb(105, 105, 105);
+  color: rgb(177, 103, 19);
 }
 h3 {
   font-size: 20px;
@@ -65,6 +65,17 @@ li {
 li > div:hover {
   cursor: pointer;
 }
+#myInput {
+  width: 50%; 
+  font-size: 16px; 
+  padding: 12px 20px 12px 40px; 
+  border: 1px solid #ddd; 
+  margin-bottom: 12px; 
+  border-radius:12px;
+}
+#meme-canvas {
+  margin-top: 15px;
+}
 /* imgs container */
 /* search bar */
 .search-bar {
@@ -80,7 +91,7 @@ li > div:hover {
   margin-inline-start: 2.5rem;
 }
 .imgs-container {
-  background-color: lightyellow;
+  background-image: lightyellow;
   padding-left: 50px;
   padding-right: 50px;
 }
@@ -106,12 +117,16 @@ li > div:hover {
 /* generator inputs */
 .font-input {
   width: 3rem;
-  background: white;
-  border-radius: 25%;
+  /* background: white; */
+  border-radius: 12px;
   display: flex;
 }
 .meme-done-btns {
-  margin-top: 100px;
+  margin-top: 30px;
+}
+.file-input.btn {
+  margin-top: 30px;
+  margin-left: 50px;
 }
 .meme-done-btn {
   background-color: #f0ece8;
@@ -265,25 +280,33 @@ header {
 }
 .meme-edit-tools {
   min-width: 30%;
-  margin-top: 85px;
+  margin-top: 30px;
   margin-left: 50px;
   align-items: center;
 }
-.meme-text-input {
-  min-width: 95%;
-  height: 60px;
+.-input {
   border-radius: 12px;
-  background-color: #ffffff;
+  height: 40px;
+  width: 260px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  text-transform: capitalize;
 }
 .btns-container {
   width: 100%;
 }
 .basic-btns {
   margin: 10px 20%;
+  border: 3px dashed rgb(157, 158, 158);
+  background-color: #7efbff;
+  border-radius: 12px;
 }
 .secondery-btns {
   margin-top: 50px;
   flex-wrap: wrap;
+  border: 3px dashed rgb(157, 158, 158);
+  background-color: #7efbff;
+  border-radius: 12px;
 }
 .text-alignment {
   margin-top: 50px;

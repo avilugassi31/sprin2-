@@ -4,8 +4,15 @@ var gMeme = { lines: [] };
 var gNextId = 0;
 var gCurrImage;
 var gFontSize = 15;
-var gLineHeights = { upperText: 20, bottomText: 70};
-let gKeyWords = { politics: 1, dog: 1, cute: 3, baby: 0, kid: 0, actor: 5 };
+var gLineHeights = { upperText: 20, bottomText: 70 };
+var gKeyWords = {
+  politics: 'politics',
+  dog: 'dog',
+  cute: 'cute',
+  baby: 'baby',
+  kid: 'kid',
+  actor: 'actor',
+};
 var gCurrKeyWord = 'all';
 
 var gNextText;
@@ -64,7 +71,7 @@ function getCurrKeyWord() {
 }
 function getImgById(imgId) {
   imgId = +imgId;
-  var currImg = gImgs.find(function(img) {
+  var currImg = gImgs.find(function (img) {
     return img.id === imgId;
   });
   return currImg;
@@ -97,4 +104,3 @@ function saveMeme(readyMeme) {
 function loadReadyMemes() {
   return loadFromStorage(KEY);
 }
-
