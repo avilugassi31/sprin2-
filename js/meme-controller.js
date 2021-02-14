@@ -1,6 +1,7 @@
 'use strict';
 var gCurrKeyWord;
 var gCurrImg;
+
 function init() {
   renderImgs();
   var elBody = document.querySelector('body');
@@ -10,8 +11,29 @@ function init() {
 function renderImgs() {
   var elImgsCont = document.querySelector('.imgs-container');
   var imgs = getImgs();
-  var strHtml1 = `<div class="templates ">`;
+  var imgs = getImgs();
+  var animals = getGanimals();
+  var politics = getGPolitics();
+  var babys = getGbaby();
+  var tvs = getGtv();
+  var others = getGother();
+  var strHtml1 = `<div class="templates shadow">`;
   var strHtml2 = imgs.map(function (img) {
+    if (img.keyWords.includes('animals')) {
+      animals.push(img);
+    }
+    if (img.keyWords.includes('politics')) {
+      politics.push(img);
+    }
+    if (img.keyWords.includes('baby')) {
+      babys.push(img);
+    }
+    if (img.keyWords.includes('tv')) {
+      tvs.push(img);
+    }
+    if (img.keyWords.includes('other')) {
+      others.push(img);
+    }
     return `
         <a onclick="renderMemeGenerator(${img.id})">
         <img class="template-${img.id}" id=${img.id} src="${img.url}" alt="template-${img.id}
@@ -21,14 +43,86 @@ function renderImgs() {
   var strHtml = strHtml1 + strHtml2.join('') + `</div>`;
   elImgsCont.innerHTML = strHtml;
 }
-// function getImagesByKeyword() {
-//    gCurrKeyWord = getGkeyWords();
-//    console.log('gCurrKeyWord:', gCurrKeyWord)
-//  if (gCurrKeyWord === 'politics') {
-//    return
-//  }
 
-// }
+function renderPoliticsImg() {
+  var politics = getGPolitics();
+  var elImgsCont = document.querySelector('.imgs-container');
+  var strHtml1 = `<div class="templates shadow">`;
+  var strHtml2 = politics.map(function (img) {
+    return `
+    <a onclick="renderMemeGenerator(${img.id})">
+    <img class="template-${img.id}" id=${img.id} src="${img.url}" alt="template-${img.id}
+     onclick="render MemeGenerator(this)"></a>
+`;
+  });
+  var strHtml = strHtml1 + strHtml2.join('') + `</div>`;
+  elImgsCont.innerHTML = strHtml;
+}
+function renderBabyImg() {
+  var babys = getGbaby();
+  var elImgsCont = document.querySelector('.imgs-container');
+  var strHtml1 = `<div class="templates shadow">`;
+  var strHtml2 = babys.map(function (img) {
+    return `
+    <a onclick="renderMemeGenerator(${img.id})">
+    <img class="template-${img.id}" id=${img.id} src="${img.url}" alt="template-${img.id}
+     onclick="render MemeGenerator(this)"></a>
+`;
+  });
+  var strHtml = strHtml1 + strHtml2.join('') + `</div>`;
+  elImgsCont.innerHTML = strHtml;
+}
+function renderTvImg() {
+  var tvs = getGtv();
+  var elImgsCont = document.querySelector('.imgs-container');
+  var strHtml1 = `<div class="templates shadow">`;
+  var strHtml2 = tvs.map(function (img) {
+    return `
+    <a onclick="renderMemeGenerator(${img.id})">
+    <img class="template-${img.id}" id=${img.id} src="${img.url}" alt="template-${img.id}
+     onclick="render MemeGenerator(this)"></a>
+`;
+  });
+  var strHtml = strHtml1 + strHtml2.join('') + `</div>`;
+  elImgsCont.innerHTML = strHtml;
+}
+function renderOtherImg() {
+  var others = getGother();
+  var elImgsCont = document.querySelector('.imgs-container');
+  var strHtml1 = `<div class="templates shadow">`;
+  var strHtml2 = others.map(function (img) {
+    return `
+    <a onclick="renderMemeGenerator(${img.id})">
+    <img class="template-${img.id}" id=${img.id} src="${img.url}" alt="template-${img.id}
+     onclick="render MemeGenerator(this)"></a>
+`;
+  });
+  var strHtml = strHtml1 + strHtml2.join('') + `</div>`;
+  elImgsCont.innerHTML = strHtml;
+}
+function renderAnimalsImg() {
+  var animals = getGanimals();
+  var elImgsCont = document.querySelector('.imgs-container');
+  var strHtml1 = `<div class="templates shadow">`;
+  var strHtml2 = animals.map(function (img) {
+    return `
+    <a onclick="renderMemeGenerator(${img.id})">
+    <img class="template-${img.id}" id=${img.id} src="${img.url}" alt="template-${img.id}
+     onclick="render MemeGenerator(this)"></a>
+`;
+  });
+  var strHtml = strHtml1 + strHtml2.join('') + `</div>`;
+  elImgsCont.innerHTML = strHtml;
+}
+
+function onSelect(value) {
+  if (value === 'politics') renderPoliticsImg();
+  if (value === 'animals') renderAnimalsImg();
+  if (value === 'baby') renderBabyImg();
+  if (value === 'tv') renderTvImg();
+  if (value === 'other') renderOtherImg();
+  if (value === 'all') renderImgs();
+}
 
 function renderMemeGenerator(imgId) {
   var currImgDetails = getImgById(imgId);
@@ -41,7 +135,7 @@ function renderMemeGenerator(imgId) {
     <div class ="canvas-container">
  
 
-    <canvas id="meme-canvas" width= "400" height="400" style="outline: 3px dashed aqua"></canvas>
+    <canvas id="meme-canvas" width= "400" height="400"  ></canvas>
     </div>
 
     <section class ="meme-edit-tools flex column align-items">
@@ -66,7 +160,7 @@ function renderMemeGenerator(imgId) {
     </div>
     </div>
     <div class="text-alignment">
-    <label for="cars">Choose a font:</label>
+    <label for="fonts" class="fonts">Choose a font:</label>
   <select name="fonts" id="fonts" ">
     <option value="Cursive">Cursive</option>
     <option value="Impact">Impact</option>
@@ -80,21 +174,22 @@ function renderMemeGenerator(imgId) {
     <a href="#" onclick="downloadCanvas(this)" download="my-meme.jpg">
     <button class="meme-done-btn">Download</button>
     </a>  
-    <button class="meme-done-btn" onclick="onSaveMeme()">Save</button> 
-    <button class="meme-done-btn" type="submit">Share</button>
-    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
+    <button class="meme-done-btn" onclick="onSaveMeme()">Save</button>
     <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
-      <input name="img" id="imgData" type="hidden" />
-       
-      <div class="share-container"></div>
+    <button class="meme-done-btn" type="submit" >Share</button>
+    
     </form>
+    <div class="share-container"></div> 
+    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
+    <input name="img" id="imgData" type="hidden" />
+  
     
     </div>
     </div>
     
     </section>
-</div>
-`;
+    </div>
+    `;
 
   drawImg(currImg);
   gCurrImage = currImg;
@@ -326,7 +421,6 @@ function downloadCanvas(elLink) {
 }
 
 function onSaveMeme() {
-  // not working properly need to be fixed if there is enough time;
   var canvas = document.querySelector('#meme-canvas');
   var readyMemes = getReadyMemes();
   readyMemes.push(canvas.toDataURL('img.png'));
@@ -340,3 +434,7 @@ function toggleMenu() {
 function toggleScreen() {
   document.body.classList.remove('menu-open');
 }
+// function openReadyMeme(savedMeme) {
+//   var canvs = document.querySelector('#meme-canvas');
+//   savedMeme = getReadyMemes();
+// }

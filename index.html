@@ -24,9 +24,15 @@
     </header>
     <div class="screen" onclick="toggleMenu()"></div>
     <div class="meme-modal"></div>
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search By Keyword..">
+    <select onchange="onSelect(this.value)" class="select-menu">
+        <option value="all">All</option>
+        <option value="politics">Politics</option>
+        <option value="animals">Animals</option>
+        <option value="baby">Baby</option>
+        <option value="tv">TV</option>
+        <option value="other">Other</option>
+    </select>
     <div class="imgs-container">
-
     </div>
     <div class="about-me flex space-between">
         <img src="imgs/avi.jpg" alt="" class="about-me-img">

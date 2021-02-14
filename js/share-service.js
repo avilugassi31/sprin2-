@@ -14,6 +14,8 @@ function loadImageFromInput(ev, onImageReady) {
 // Based on Stav inClass Code;
 function uploadImg(elForm, ev) {
   ev.preventDefault();
+  var gElCanvas = document.querySelector('#meme-canvas');
+  console.log(gElCanvas);
   document.getElementById('imgData').value = gElCanvas.toDataURL('image/jpeg');
   // A function to be called if request succeeds
   function onSuccess(uploadedImgUrl) {
@@ -33,6 +35,7 @@ function doUploadImg(elForm, onSuccess) {
     body: formData,
   })
     .then(function (res) {
+      console.log(res);
       return res.text();
     })
     .then(onSuccess)
@@ -46,3 +49,5 @@ function onImgInput(ev) {
 function renderImg(img) {
   gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
 }
+
+

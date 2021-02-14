@@ -19,6 +19,14 @@ var gNextText;
 const KEY = 'savedMemes';
 var gReadyMemes = loadReadyMemes() ? loadReadyMemes() : []; // i take that short if from google.
 
+// variables for selected value:
+var gToyKeywords = [];
+var gPoliticKeywords = [];
+var gTvKeywords = [];
+var gAnimalKeywords = [];
+var gBabyKeywords = [];
+var gOtherKeywords = [];
+
 function getImgs() {
   if (gCurrKeyWord === 'all') return gImgs;
   else {
@@ -43,24 +51,24 @@ function createImg(urlIdx, desc) {
 createImages();
 function createImages() {
   var createdImgs = [
-    createImg(1, ['politics', 'stupid']),
-    createImg(2, ['dog', 'cute']),
-    createImg(3, ['dog', 'cute', 'baby']),
-    createImg(4, ['cat', 'cute']),
-    createImg(5, ['baby', 'epic']),
-    createImg(6, ['epic', 'aliens', 'history channel']),
-    createImg(7, ['baby', 'cute']),
-    createImg(8, ['willi wonka', 'cynical']),
-    createImg(9, ['baby', 'evil']),
-    createImg(10, ['politics', 'awsome']),
-    createImg(11, ['sports', 'gay']),
-    createImg(12, ['israeli']),
-    createImg(13, ['actor', 'awsome']),
-    createImg(14, ['actor', 'awsome', 'cynical']),
-    createImg(15, ['actor', 'awsome', 'cynical']),
-    createImg(16, ['actor', 'cynical']),
+    createImg(1, ['politics']),
+    createImg(2, ['animals']),
+    createImg(3, ['animals']),
+    createImg(4, ['animals']),
+    createImg(5, ['baby']),
+    createImg(6, ['tv']),
+    createImg(7, ['baby']),
+    createImg(8, ['tv']),
+    createImg(9, ['baby']),
+    createImg(10, ['politics']),
+    createImg(11, ['other']),
+    createImg(12, ['tv']),
+    createImg(13, ['tv']),
+    createImg(14, ['tv']),
+    createImg(15, ['tv']),
+    createImg(16, ['tv']),
     createImg(17, ['politics']),
-    createImg(18, ['toy story', 'awsome']),
+    createImg(18, ['other']),
   ];
   createdImgs.forEach(function (img) {
     gImgs.push(img);
@@ -97,6 +105,23 @@ function resetMeme(imgId) {
 function getReadyMemes() {
   return gReadyMemes;
 }
+
+function getGPolitics() {
+  return gPoliticKeywords;
+}
+function getGtv() {
+  return gTvKeywords;
+}
+function getGanimals() {
+  return gAnimalKeywords;
+}
+function getGbaby() {
+  return gBabyKeywords;
+}
+function getGother() {
+  return gOtherKeywords;
+}
+
 // load and svae functions localstorage - not working properly:need to be fixed;
 function saveMeme(readyMeme) {
   saveToStorage(KEY, readyMeme);
